@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js" data-title-de="Home Assistant – DepecheMartin" data-title-en="Home Assistant – DepecheMartin">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Assistant – DepecheMartin</title>
+<meta name="description" content="Home-Assistant-Automationen, Dashboards und YAML-Schnipsel.">
+<meta name="theme-color" content="#08080a">
+<meta property="og:title" content="Home Assistant – DepecheMartin">
+<meta property="og:description" content="Home-Assistant-Automationen, Dashboards und YAML-Schnipsel.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(d){d.classList.remove("no-js");try{var l=localStorage.getItem("km-lang");if(l)d.lang=l;else if(!/^de/i.test(navigator.language||"de"))d.lang="en";}catch(e){}})(document.documentElement);</script>
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main"><span data-l="de">Zum Inhalt</span><span data-l="en">Skip to content</span></a>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-spot" aria-hidden="true"></div>
+<div class="bg-scan" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="DepecheMartin – Start">
+      <span class="logo-mark">DM</span>
+      <span>DepecheMartin<small>koflers.net / <span data-l="de">werkstatt</span><span data-l="en">workshop</span></small></span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation"><a href="index.html"><span data-l="de">Start</span><span data-l="en">Home</span></a><a href="3d-druck.html"><span data-l="de">3D-Druck</span><span data-l="en">3D Printing</span></a><a href="plotten.html"><span data-l="de">Plotten</span><span data-l="en">Plotting</span></a><a href="home-assistant.html" aria-current="page"><span data-l="de">Home Assistant</span><span data-l="en">Home Assistant</span></a><a href="musik.html"><span data-l="de">Musik</span><span data-l="en">Music</span></a><a href="ueber.html"><span data-l="de">Über mich</span><span data-l="en">About</span></a></nav>
+    <div class="tools">
+      <button class="btn-ghost cmd-btn" type="button" aria-label="Suche / Befehle"><span class="lbl"><span data-l="de">Suche</span><span data-l="en">Search</span></span> <kbd>Strg K</kbd></button>
+      <button class="btn-ghost lang-toggle" type="button" aria-label="Sprache wechseln / switch language"><span class="de">DE</span><span class="sep">/</span><span class="en">EN</span></button>
+      <button class="btn-ghost menu-btn" type="button" aria-expanded="false" aria-label="Menü">☰</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker rv"><span data-l="de">Bereich 03 — Smart Home</span><span data-l="en">Section 03 — Smart home</span></span>
+    <h1 class="glitch rv d1" data-text="Home Assistant"><span data-l="de">Home Assistant</span><span data-l="en">Home Assistant</span></h1>
+    <p class="lead rv d2"><span data-l="de">Mein Zuhause als Code: Automationen, Dashboards und Lösungen, die ich mir sonst jedes Mal neu zusammensuchen müsste.</span><span data-l="en">My home as code: automations, dashboards and solutions I'd otherwise have to dig up again every time.</span></p>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap split">
+    <div class="stack rv">
+      <span class="kicker"><span data-l="de">Automation</span><span data-l="en">Automation</span> #001</span>
+      <h2><span data-l="de">Abendlicht.</span><span data-l="en">Evening light.</span></h2>
+      <p><span data-l="de">Beispiel-Platzhalter: So sieht später jede Automation aus – kurze Erklärung, dazu der YAML-Code zum Kopieren.</span><span data-l="en">Example placeholder: this is how each automation will look – a short explanation plus the YAML code to copy.</span></p>
+      <div class="notice"><p><span data-l="de"><strong>Sicherheit:</strong> Mein Home Assistant ist von dieser Seite aus <strong>nicht</strong> erreichbar. Hier steht nur Dokumentation – ohne Passwörter, Tokens oder interne Adressen.</span><span data-l="en"><strong>Security:</strong> my Home Assistant is <strong>not</strong> reachable from this site. This is documentation only – no passwords, tokens or internal addresses.</span></p></div>
+    </div>
+    <div class="code rv d1">
+      <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span>automations.yaml</span>
+        <button class="btn-ghost copy-btn" type="button"><span data-l="de">Kopieren</span><span data-l="en">Copy</span></button></div>
+      <pre><code><span class="c"># Platzhalter: Licht bei Sonnenuntergang einschalten</span>
+<span class="k">alias</span>: <span class="s">"Wohnzimmer – Abendlicht"</span>
+<span class="k">description</span>: <span class="s">"Schaltet das Licht 30 min vor Sonnenuntergang ein"</span>
+<span class="k">triggers</span>:
+  - <span class="k">trigger</span>: sun
+    <span class="k">event</span>: sunset
+    <span class="k">offset</span>: <span class="s">"-00:30:00"</span>
+<span class="k">conditions</span>:
+  - <span class="k">condition</span>: state
+    <span class="k">entity_id</span>: group.familie
+    <span class="k">state</span>: home
+<span class="k">actions</span>:
+  - <span class="k">action</span>: light.turn_on
+    <span class="k">target</span>:
+      <span class="k">entity_id</span>: light.wohnzimmer
+    <span class="k">data</span>:
+      <span class="k">brightness_pct</span>: 60
+<span class="k">mode</span>: single</code></pre>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+  <div class="idx rv">// 03.A</div>
+  <div><span class="kicker rv"><span data-l="de">Dashboards</span><span data-l="en">Dashboards</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Oberflächen.</span><span data-l="en">Interfaces.</span></h2><p class="rv d2"><span data-l="de">Screenshots meiner Dashboards – mit den verwendeten Karten und Themes.</span><span data-l="en">Screenshots of my dashboards – with the cards and themes used.</span></p></div>
+</div>
+    <div class="grid g2">
+      <div class="card rv"><div class="ph-img wide"><span><span data-l="de">Dashboard-Screenshot folgt</span><span data-l="en">Dashboard screenshot coming</span></span></div><h3><span data-l="de">Übersicht</span><span data-l="en">Overview</span></h3></div>
+      <div class="card rv d1"><div class="ph-img wide"><span><span data-l="de">Dashboard-Screenshot folgt</span><span data-l="en">Dashboard screenshot coming</span></span></div><h3><span data-l="de">Energie</span><span data-l="en">Energy</span></h3></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+  <div class="idx rv">// 03.B</div>
+  <div><span class="kicker rv"><span data-l="de">Integrationen</span><span data-l="en">Integrations</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Was verbunden ist.</span><span data-l="en">What's connected.</span></h2></div>
+</div>
+    <div class="grid g4">
+      <div class="card rv d0"><div class="num"><span>I-01</span></div><h3><span data-l="de">Platzhalter</span><span data-l="en">Placeholder</span></h3><p class="muted"><span data-l="de">Integration / Gerät</span><span data-l="en">Integration / device</span></p></div><div class="card rv d1"><div class="num"><span>I-02</span></div><h3><span data-l="de">Platzhalter</span><span data-l="en">Placeholder</span></h3><p class="muted"><span data-l="de">Integration / Gerät</span><span data-l="en">Integration / device</span></p></div><div class="card rv d2"><div class="num"><span>I-03</span></div><h3><span data-l="de">Platzhalter</span><span data-l="en">Placeholder</span></h3><p class="muted"><span data-l="de">Integration / Gerät</span><span data-l="en">Integration / device</span></p></div><div class="card rv d0"><div class="num"><span>I-04</span></div><h3><span data-l="de">Platzhalter</span><span data-l="en">Placeholder</span></h3><p class="muted"><span data-l="de">Integration / Gerät</span><span data-l="en">Integration / device</span></p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="logo"><span class="logo-mark">DM</span><span>DepecheMartin<small>koflers.net</small></span></div>
+        <p class="muted" style="margin-top:18px;max-width:380px"><span data-l="de">Ein persönliches Logbuch über 3D-Druck, Plotten, Smart Home und Dark Wave. Gebaut ohne Tracker und ohne Cookies.</span><span data-l="en">A personal log on 3D printing, plotting, smart home and dark wave. Built without trackers and without cookies.</span></p>
+      </div>
+      <div>
+        <h4><span data-l="de">Bereiche</span><span data-l="en">Sections</span></h4>
+        <ul><li><a href="3d-druck.html"><span data-l="de">3D-Druck</span><span data-l="en">3D Printing</span></a></li><li><a href="plotten.html"><span data-l="de">Plotten</span><span data-l="en">Plotting</span></a></li><li><a href="home-assistant.html"><span data-l="de">Home Assistant</span><span data-l="en">Home Assistant</span></a></li><li><a href="musik.html"><span data-l="de">Musik</span><span data-l="en">Music</span></a></li></ul>
+      </div>
+      <div>
+        <h4><span data-l="de">Rechtliches</span><span data-l="en">Legal</span></h4>
+        <ul>
+          <li><a href="impressum.html"><span data-l="de">Impressum / Offenlegung</span><span data-l="en">Legal notice</span></a></li>
+          <li><a href="datenschutz.html"><span data-l="de">Datenschutz</span><span data-l="en">Privacy</span></a></li>
+          <li><a href="ueber.html#kontakt"><span data-l="de">Kontakt</span><span data-l="en">Contact</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="big" aria-hidden="true">DEPECHEMARTIN</div>
+    <div class="bottom">
+      <span>© 2026 DepecheMartin · koflers.net</span>
+      <span>Uptime <span id="uptime" data-since="2026-11-13">—</span></span>
+      <span><span data-l="de">Gebaut in Österreich</span><span data-l="en">Built in Austria</span> · v1.0</span>
+    </div>
+  </div>
+</footer>
+<div class="readout" aria-hidden="true"><span>X <b id="rx">0000</b></span><span>Y <b id="ry">0000</b></span><span>koflers.net</span></div>
+<div class="cmdk" role="dialog" aria-modal="true" aria-label="Befehlspalette">
+  <div class="cmdk-box">
+    <div class="cmdk-in"><span>&gt;_</span><input type="text" autocomplete="off" spellcheck="false" data-ph-de="Seite oder Befehl suchen …" data-ph-en="Search page or command …"></div>
+    <ul></ul>
+    <div class="cmdk-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> <span data-l="de">wählen</span><span data-l="en">select</span></span><span><kbd>↵</kbd> <span data-l="de">öffnen</span><span data-l="en">open</span></span><span><kbd>Esc</kbd> <span data-l="de">schließen</span><span data-l="en">close</span></span></div>
+  </div>
+</div>
+</body>
+</html>

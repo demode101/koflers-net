@@ -1,0 +1,25 @@
+koflers.net – DepecheMartin / Werkstatt  (Version 1.0, Platzhalter)
+=====================================================================
+
+INHALT
+  index.html            Startseite (mit Boot-Intro, einmal pro Browser-Sitzung)
+  3d-druck.html         3D-Druck mit STL-Viewer
+  plotten.html          Plotten mit selbstzeichnenden SVG-Vorschauen
+  home-assistant.html   Home Assistant mit YAML-Code zum Kopieren
+  musik.html            Musik mit Oszilloskop
+  ueber.html            Über mich / Kontakt
+  impressum.html        Offenlegung nach § 25 MedienG  -> ROTE FELDER AUSFÜLLEN
+  datenschutz.html      Datenschutzerklärung           -> ROTE FELDER AUSFÜLLEN
+  404.html              Fehlerseite
+  CNAME                 Für GitHub Pages: enthält "koflers.net"
+  assets/               Design (css), Skripte (js), Modelle, SVGs, Favicon
+
+WICHTIG
+  - Alle Dateien und Ordner genau so hochladen, wie sie hier liegen.
+  - Lokal per Doppelklick geöffnet funktionieren der 3D-Viewer und die
+    Plotter-Animation nicht (der Browser blockiert das Laden von Dateien).
+    Online funktioniert alles.
+  - Keine externen Dienste, keine Cookies, keine Google Fonts.
+
+TASTENKÜRZEL
+  Strg + K  oder  /     Befehlspalette (Seiten und Aktionen suchen)
