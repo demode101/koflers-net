@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Musik – DepecheMartin</title>
-<meta name="description" content="Dark Wave, Synth-Pop und Post-Punk: Depeche Mode, VNV Nation, Pet Shop Boys, New Order, Joy Division.">
+<meta name="description" content="Was bei DepecheMartin gerade läuft: Spotify live, Lieblingsbands und die Platten, die ihn geprägt haben.">
 <meta name="theme-color" content="#08080a">
 <meta property="og:title" content="Musik – DepecheMartin">
 <meta property="og:description" content="Dark Wave, Synth-Pop und Post-Punk: Depeche Mode, VNV Nation, Pet Shop Boys, New Order, Joy Division.">
@@ -35,24 +35,20 @@
     </div>
   </div>
 </header>
-<main id="main">
+<main id="main" class="compact">
 
 <section class="page-hero">
   <div class="wrap">
     <span class="kicker rv"><span data-l="de">Bereich 04 — Musik</span><span data-l="en">Section 04 — Music</span></span>
     <h1 class="glitch rv d1" data-text="Musik"><span data-l="de">Musik</span><span data-l="en">Music</span></h1>
-    <p class="lead rv d2"><span data-l="de">Synthesizer, Drumcomputer und Melancholie: Dark Wave, Synth-Pop und Post-Punk.</span><span data-l="en">Synthesizers, drum machines and melancholy: dark wave, synth-pop and post-punk.</span></p>
+    <p class="lead rv d2"><span data-l="de">Angefangen hat alles mit zwei Kassetten von meinem Lehrherrn: „101“ von Depeche Mode und „The Circus“ von Erasure. Seitdem laufen bei mir melancholische Synthesizer in Dauerschleife – hier siehst du, welche bei mir gerade hoch im Kurs stehen.</span><span data-l="en">It all started with two cassettes from my master during my apprenticeship: Depeche Mode’s “101” and Erasure’s “The Circus”. Melancholic synthesizers have been on repeat ever since – here you can see which ones are riding high with me right now.</span></p>
   </div>
 </section>
-<div class="wave-strip">
-  <span class="lbl"><span data-l="de">Oszilloskop · Maus darüber bewegen</span><span data-l="en">Oscilloscope · move your mouse over it</span></span>
-  <canvas class="wave big" data-mode="osc" aria-hidden="true"></canvas>
-</div>
 <section class="sp" data-api="https://koflers-spotify.mk-ee6.workers.dev">
   <div class="wrap">
     <div class="sec-head">
   <div class="idx rv">// 04.A</div>
-  <div><span class="kicker rv"><span data-l="de">Live aus Spotify</span><span data-l="en">Live from Spotify</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Was hier läuft.</span><span data-l="en">What's playing.</span></h2><p class="rv d2"><span data-l="de">Direkt aus meinem Spotify-Konto – aktualisiert sich von selbst.</span><span data-l="en">Straight from my Spotify account – updates itself.</span></p></div>
+  <div><span class="kicker rv"><span data-l="de">Live aus Spotify</span><span data-l="en">Live from Spotify</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Ehrlich gehört.</span><span data-l="en">Honestly heard.</span></h2><p class="rv d2"><span data-l="de">Spotify verpetzt mich hier live – auch bei den Songs, die ich lieber nicht zugeben würde.</span><span data-l="en">Spotify snitches on me here, live – even about the songs I’d rather not admit to.</span></p></div>
 </div>
 
     <div class="sp-now rv" data-state="loading">
@@ -70,7 +66,12 @@
       </div>
     </div>
 
-    <div class="grid g2 mt-l">
+    <div class="wave-box rv">
+      <span class="lbl"><span data-l="de">Equalizer</span><span data-l="en">Equalizer</span></span>
+      <canvas class="eq" aria-hidden="true"></canvas>
+    </div>
+
+    <div class="grid g2">
       <div class="sp-panel rv">
         <div class="sp-panel-head">
           <span class="kicker"><span data-l="de">Zuletzt gehört</span><span data-l="en">Recently played</span></span>
@@ -108,21 +109,24 @@
   <div class="wrap">
     <div class="sec-head">
   <div class="idx rv">// 04.C</div>
-  <div><span class="kicker rv"><span data-l="de">Plattenregal</span><span data-l="en">Record shelf</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Lieblingsalben.</span><span data-l="en">Favourite albums.</span></h2><p class="rv d2"><span data-l="de">Platzhalter – hier kommen meine Lieblingsalben hin. Hover über eine Platte.</span><span data-l="en">Placeholder – my favourite albums go here. Hover over a record.</span></p></div>
+  <div><span class="kicker rv"><span data-l="de">Plattenregal</span><span data-l="en">Record shelf</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Lieblingsalben.</span><span data-l="en">Favourite albums.</span></h2><p class="rv d2"><span data-l="de">Die Platten, die mich geprägt haben. Hover über ein Cover.</span><span data-l="en">The records that shaped me. Hover over a cover.</span></p></div>
 </div>
-    <div class="grid g4"><div class="album rv d0">
-  <div class="vinyl" aria-hidden="true"></div>
-  <div><div class="t"><span data-l="de">Album-Titel</span><span data-l="en">Album title</span></div><div class="a"><span data-l="de">Interpret · Jahr</span><span data-l="en">Artist · Year</span></div></div>
-</div><div class="album rv d1">
-  <div class="vinyl" aria-hidden="true"></div>
-  <div><div class="t"><span data-l="de">Album-Titel</span><span data-l="en">Album title</span></div><div class="a"><span data-l="de">Interpret · Jahr</span><span data-l="en">Artist · Year</span></div></div>
-</div><div class="album rv d2">
-  <div class="vinyl" aria-hidden="true"></div>
-  <div><div class="t"><span data-l="de">Album-Titel</span><span data-l="en">Album title</span></div><div class="a"><span data-l="de">Interpret · Jahr</span><span data-l="en">Artist · Year</span></div></div>
-</div><div class="album rv d0">
-  <div class="vinyl" aria-hidden="true"></div>
-  <div><div class="t"><span data-l="de">Album-Titel</span><span data-l="en">Album title</span></div><div class="a"><span data-l="de">Interpret · Jahr</span><span data-l="en">Artist · Year</span></div></div>
-</div></div>
+    <div class="grid g5 albums"><a class="album rv d0" data-q="album:Noire artist:&quot;VNV Nation&quot;" href="https://open.spotify.com/search/VNV%20Nation%20Noire" target="_blank" rel="noopener">
+  <div class="album-art"><div class="vinyl" aria-hidden="true"></div><img class="album-cover" alt="" hidden></div>
+  <div><div class="t">Noire</div><div class="a">VNV Nation · 2018</div></div>
+</a><a class="album rv d1" data-q="album:101 artist:&quot;Depeche Mode&quot;" href="https://open.spotify.com/search/Depeche%20Mode%20101" target="_blank" rel="noopener">
+  <div class="album-art"><div class="vinyl" aria-hidden="true"></div><img class="album-cover" alt="" hidden></div>
+  <div><div class="t">101</div><div class="a">Depeche Mode · 1989</div></div>
+</a><a class="album rv d2" data-q="album:&quot;The Innocents&quot; artist:Erasure" href="https://open.spotify.com/search/Erasure%20The%20Innocents" target="_blank" rel="noopener">
+  <div class="album-art"><div class="vinyl" aria-hidden="true"></div><img class="album-cover" alt="" hidden></div>
+  <div><div class="t">The Innocents</div><div class="a">Erasure · 1988</div></div>
+</a><a class="album rv d0" data-q="album:&quot;Unknown Pleasures&quot; artist:&quot;Joy Division&quot;" href="https://open.spotify.com/search/Joy%20Division%20Unknown%20Pleasures" target="_blank" rel="noopener">
+  <div class="album-art"><div class="vinyl" aria-hidden="true"></div><img class="album-cover" alt="" hidden></div>
+  <div><div class="t">Unknown Pleasures</div><div class="a">Joy Division · 1979</div></div>
+</a><a class="album rv d1" data-q="album:&quot;Die Mensch-Maschine&quot; artist:Kraftwerk" href="https://open.spotify.com/search/Kraftwerk%20Die%20Mensch-Maschine" target="_blank" rel="noopener">
+  <div class="album-art"><div class="vinyl" aria-hidden="true"></div><img class="album-cover" alt="" hidden></div>
+  <div><div class="t">Die Mensch-Maschine</div><div class="a">Kraftwerk · 1978</div></div>
+</a></div>
   </div>
 </section>
 <section>

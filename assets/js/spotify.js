@@ -178,6 +178,72 @@
     }).catch(function () { /* Lieblingsliste bleibt stehen */ });
   }
 
+  /* ---------------- Equalizer (simuliert) ---------------- */
+  var eqCv = document.querySelector("canvas.eq");
+  if (eqCv) (function () {
+    var ctx = eqCv.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0;
+    var N = 0, SEG = 0, lv = [], pk = [], pkT = [], vis = true, last = 0, beat = 0, nextBeat = 0, bpm = 120;
+    function size() {
+      var r = eqCv.getBoundingClientRect(); W = r.width; H = r.height;
+      eqCv.width = W * dpr; eqCv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      N = Math.max(16, Math.min(72, Math.floor(W / 16))); SEG = Math.max(8, Math.floor((H - 34) / 6));
+      while (lv.length < N) { lv.push(0); pk.push(0); pkT.push(0); }
+    }
+    size(); window.addEventListener("resize", size);
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }).observe(eqCv);
+    /* Tempo pro Song "erraten" (aus dem Titel abgeleitet, nicht echt) */
+    function tempo() {
+      var t = state && state.track ? state.track.title + state.track.artists : "";
+      var h = 0; for (var i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) | 0;
+      return 108 + Math.abs(h) % 30;
+    }
+    function frame(ts) {
+      requestAnimationFrame(frame);
+      if (!vis || !W || document.hidden) return;
+      var dt = Math.min(.05, (ts - last) / 1000 || 0); last = ts;
+      var playing = !!(state && state.playing), energy = playing ? 1 : .32, t = ts / 1000;
+      if (ts >= nextBeat) { bpm = tempo(); beat = 1; nextBeat = ts + 60000 / bpm; }
+      beat *= Math.pow(.02, dt);
+      ctx.clearRect(0, 0, W, H);
+      var top = 26, bottom = H - 8, area = bottom - top, gap = 3, bw = (W - 32) / N, segH = area / SEG;
+      for (var i = 0; i < N; i++) {
+        var x = i / (N - 1);
+        var shape = Math.pow(1 - x, .9) * .55 + .25 + Math.exp(-Math.pow((x - .32) * 5, 2)) * .25;
+        var noise = (Math.sin(t * 3.1 + i * 1.7) + Math.sin(t * 5.3 + i * .63) + Math.sin(t * 8.9 + i * 2.9)) / 6 + .5;
+        var kick = beat * Math.exp(-x * 4) * .7;
+        var target = Math.min(1, (shape * (.45 + noise * .6) + kick) * energy + (playing ? 0 : .04));
+        lv[i] += (target - lv[i]) * (target > lv[i] ? .55 : .12);
+        if (lv[i] >= pk[i]) { pk[i] = lv[i]; pkT[i] = ts; } else if (ts - pkT[i] > 380) pk[i] = Math.max(lv[i], pk[i] - dt * .5);
+        var on = Math.round(lv[i] * SEG), bx = 16 + i * bw;
+        for (var s = 0; s < SEG; s++) {
+          var y = bottom - (s + 1) * segH;
+          var hot = s / SEG;
+          ctx.fillStyle = s < on
+            ? (hot > .85 ? "#ffffff" : hot > .6 ? "#ff6a6a" : "#ff2b2b")
+            : "rgba(255,255,255,.045)";
+          ctx.fillRect(bx, y + 1, bw - gap, segH - 2);
+        }
+        var py = bottom - Math.max(1, Math.round(pk[i] * SEG)) * segH;
+        ctx.fillStyle = "rgba(255,43,43,.95)";
+        ctx.shadowColor = "rgba(255,43,43,.8)"; ctx.shadowBlur = 8;
+        ctx.fillRect(bx, py - 2, bw - gap, 2);
+        ctx.shadowBlur = 0;
+      }
+    }
+    requestAnimationFrame(frame);
+  })();
+
+  /* ---------------- Lieblingsalben: Cover & Link ---------------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".album[data-q]"), function (card) {
+    get("/api/album?q=" + encodeURIComponent(card.getAttribute("data-q"))).then(function (a) {
+      if (!a || !a.cover) return;
+      var im = card.querySelector(".album-cover");
+      im.src = img(a.cover); im.alt = "Cover: " + a.title; im.hidden = false;
+      card.classList.add("has-cover");
+      if (a.url) card.href = a.url;
+    }).catch(function () { /* Platte ohne Cover bleibt stehen */ });
+  });
+
   /* ---------------- Sprache & Start ---------------- */
   document.addEventListener("langchange", function () { renderNow(); renderList("recent"); renderList("top"); });
 

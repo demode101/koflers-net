@@ -442,6 +442,25 @@ td .sw { display: inline-block; width: 10px; height: 10px; margin-right: 8px; ve
 .sp-credit { font: 11px var(--mono); color: var(--dim); margin: 14px 0 0; letter-spacing: .04em; }
 @media (max-width: 720px) { .sp-now { grid-template-columns: 1fr; } .sp-now-art { max-width: 260px; } }
 
+.wave-box { position: relative; border: 1px solid var(--line); background: var(--bg-2); margin: 28px auto; width: 50%; }
+@media (max-width: 720px) { .wave-box { width: 100%; } }
+.wave-box .lbl { position: absolute; left: 16px; top: 10px; font: 10px var(--mono); color: var(--muted); letter-spacing: .14em; text-transform: uppercase; pointer-events: none; }
+.eq { display: block; width: 100%; height: clamp(110px, 12vw, 150px); }
+
+/* ---------- albums ---------- */
+.g5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1080px) { .g5 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px) { .g5 { grid-template-columns: repeat(2, 1fr); } }
+a.album { color: inherit; text-decoration: none; transition: background .3s; }
+a.album:hover { background: var(--bg-2); }
+a.album:hover .t { color: var(--red); }
+.album .t { transition: color .2s; }
+.album-art { position: relative; aspect-ratio: 1; }
+.album-art .vinyl { position: absolute; inset: 3%; transition: transform .7s var(--ease); }
+.album-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; box-shadow: 0 24px 50px rgba(0, 0, 0, .65), 0 0 0 1px var(--line-2); transition: transform .7s var(--ease); }
+.album.has-cover:hover .vinyl { transform: translateX(26%); }
+.album.has-cover:hover .album-cover { transform: translateX(-6%); }
+
 /* ---------- band cloud ---------- */
 .cloud { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px clamp(14px, 2.4vw, 30px); padding: clamp(28px, 5vw, 56px) clamp(10px, 3vw, 40px); border: 1px solid var(--line); background: radial-gradient(ellipse at center, var(--bg-2), var(--bg) 70%); }
 .cloud > * {
@@ -450,6 +469,15 @@ td .sw { display: inline-block; width: 10px; height: 10px; margin-right: 8px; ve
 }
 .cloud > *:hover { color: var(--red); transform: scale(1.06); text-shadow: 0 0 24px var(--red-glow); }
 .cloud > .top { color: var(--text); }
+
+/* ---------- kompakte Seiten (zuerst Musik) ---------- */
+.compact section { padding-block: clamp(36px, 5vw, 64px); }
+.compact .page-hero { padding: clamp(32px, 4.5vw, 56px) 0 clamp(20px, 3vw, 32px); }
+.compact .page-hero h1 { font-size: clamp(34px, 4.6vw, 56px); margin: 12px 0 12px; }
+.compact .page-hero .lead { font-size: clamp(15px, 1.4vw, 17px); max-width: 720px; }
+.compact .sec-head { margin-bottom: 28px; }
+.compact .sec-head h2 { font-size: clamp(24px, 2.8vw, 34px); margin-top: 8px !important; }
+.compact .sec-head p { margin-top: 8px; }
 
 /* ---------- code ---------- */
 .code {
