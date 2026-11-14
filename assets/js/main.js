@@ -327,6 +327,28 @@
   });
 
   /* ------------------------------------------------------------------ */
+  /* Parallax (Über-mich-Bühne) + zweisprachige Alt-Texte                 */
+  /* ------------------------------------------------------------------ */
+  var duo = $(".duo");
+  if (duo && !reduced && window.matchMedia("(hover: hover)").matches) {
+    var tilt = $(".duo-tilt", duo);
+    duo.addEventListener("pointermove", function (e) {
+      var r = duo.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / r.width - .5, ny = (e.clientY - r.top) / r.height - .5;
+      tilt.style.transform = "rotateY(" + (nx * 9).toFixed(2) + "deg) rotateX(" + (-ny * 7).toFixed(2) + "deg)";
+    });
+    duo.addEventListener("pointerleave", function () { tilt.style.transform = ""; });
+  }
+  function altLang(lang) {
+    $$("img[data-alt-en]").forEach(function (img) {
+      if (!img.hasAttribute("data-alt-de")) img.setAttribute("data-alt-de", img.alt);
+      img.alt = img.getAttribute("data-alt-" + lang);
+    });
+  }
+  altLang(html.lang);
+  document.addEventListener("langchange", function (e) { altLang(e.detail); });
+
+  /* ------------------------------------------------------------------ */
   /* Footer: Laufzeit-Zähler                                               */
   /* ------------------------------------------------------------------ */
   var up = $("#uptime");
