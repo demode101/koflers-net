@@ -367,7 +367,7 @@ td .sw { display: inline-block; width: 10px; height: 10px; margin-right: 8px; ve
 
 /* ---------- waveform ---------- */
 .wave { width: 100%; height: 160px; display: block; }
-.wave.big { height: clamp(220px, 32vw, 380px); }
+.wave.big { height: clamp(110px, 16vw, 190px); }
 .wave-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; }
 .wave-strip .lbl { position: absolute; left: var(--pad); top: 12px; font: 11px var(--mono); color: var(--muted); letter-spacing: .14em; text-transform: uppercase; }
 
