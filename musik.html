@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(d){d.classList.remove("no-js");try{var l=localStorage.getItem("km-lang");if(l)d.lang=l;else if(!/^de/i.test(navigator.language||"de"))d.lang="en";}catch(e){}})(document.documentElement);</script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/spotify.js" defer></script>
 </head>
 <body>
 
@@ -47,21 +48,66 @@
   <span class="lbl"><span data-l="de">Oszilloskop · Maus darüber bewegen</span><span data-l="en">Oscilloscope · move your mouse over it</span></span>
   <canvas class="wave big" data-mode="osc" aria-hidden="true"></canvas>
 </div>
-<section>
-  <div class="wrap split">
-    <div>
-      <div class="sec-head">
+<section class="sp" data-api="https://koflers-spotify.mk-ee6.workers.dev">
+  <div class="wrap">
+    <div class="sec-head">
   <div class="idx rv">// 04.A</div>
-  <div><span class="kicker rv"><span data-l="de">Heavy Rotation</span><span data-l="en">Heavy rotation</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Was hier läuft.</span><span data-l="en">What's playing.</span></h2><p class="rv d2"><span data-l="de">Die Bands, die meinen Soundtrack bestimmen.</span><span data-l="en">The bands that define my soundtrack.</span></p></div>
+  <div><span class="kicker rv"><span data-l="de">Live aus Spotify</span><span data-l="en">Live from Spotify</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Was hier läuft.</span><span data-l="en">What's playing.</span></h2><p class="rv d2"><span data-l="de">Direkt aus meinem Spotify-Konto – aktualisiert sich von selbst.</span><span data-l="en">Straight from my Spotify account – updates itself.</span></p></div>
 </div>
+
+    <div class="sp-now rv" data-state="loading">
+      <div class="sp-now-art">
+        <div class="vinyl" aria-hidden="true"></div>
+        <img class="sp-cover" alt="" hidden>
+      </div>
+      <div class="sp-now-info">
+        <span class="sp-status"><i></i><span class="sp-status-txt"><span data-l="de">Verbinde mit Spotify …</span><span data-l="en">Connecting to Spotify …</span></span></span>
+        <h3 class="sp-title">—</h3>
+        <div class="sp-artist">&nbsp;</div>
+        <div class="sp-album">&nbsp;</div>
+        <div class="sp-progress" hidden><div class="sp-bar"><span></span></div><div class="sp-time"><span class="sp-cur">0:00</span><span class="sp-dur">0:00</span></div></div>
+        <a class="btn outline sp-open" href="https://open.spotify.com" target="_blank" rel="noopener" hidden><span data-l="de">In Spotify öffnen</span><span data-l="en">Open in Spotify</span></a>
+      </div>
     </div>
-    <ul class="band-list"><li class='rv'>Depeche Mode</li><li class='rv'>VNV Nation</li><li class='rv'>Pet Shop Boys</li><li class='rv'>New Order</li><li class='rv'>Joy Division</li></ul>
+
+    <div class="grid g2 mt-l">
+      <div class="sp-panel rv">
+        <div class="sp-panel-head">
+          <span class="kicker"><span data-l="de">Zuletzt gehört</span><span data-l="en">Recently played</span></span>
+          <span class="tag"><span data-l="de">Letzte 10</span><span data-l="en">Last 10</span></span>
+        </div>
+        <ol class="sp-list" data-list="recent"><li class="sp-empty"><span data-l="de">Lade …</span><span data-l="en">Loading …</span></li></ol>
+      </div>
+      <div class="sp-panel rv d1">
+        <div class="sp-panel-head">
+          <span class="kicker">Top 10</span>
+          <div class="sp-seg" role="tablist" aria-label="Zeitraum / period">
+            <button type="button" role="tab" data-range="long" aria-selected="true"><span data-l="de">12 Monate</span><span data-l="en">12 months</span></button>
+            <button type="button" role="tab" data-range="medium" aria-selected="false"><span data-l="de">6 Monate</span><span data-l="en">6 months</span></button>
+            <button type="button" role="tab" data-range="short" aria-selected="false"><span data-l="de">1 Monat</span><span data-l="en">1 month</span></button>
+          </div>
+        </div>
+        <ol class="sp-list ranked" data-list="top"><li class="sp-empty"><span data-l="de">Lade …</span><span data-l="en">Loading …</span></li></ol>
+      </div>
+    </div>
+    <p class="sp-credit"><span data-l="de">Daten von</span><span data-l="en">Data from</span> Spotify · <span data-l="de">„1 Monat“ entspricht bei Spotify etwa den letzten 4 Wochen.</span><span data-l="en">“1 month” is roughly the last 4 weeks on Spotify.</span></p>
   </div>
 </section>
 <section>
   <div class="wrap">
     <div class="sec-head">
   <div class="idx rv">// 04.B</div>
+  <div><span class="kicker rv"><span data-l="de">Band-Cloud</span><span data-l="en">Band cloud</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Meine Musik-Familie.</span><span data-l="en">My music family.</span></h2><p class="rv d2"><span data-l="de">Je größer, desto wichtiger – meine Lieblinge, verstärkt durch das, was ich bei Spotify am meisten höre.</span><span data-l="en">The bigger, the more important – my favourites, boosted by what I play most on Spotify.</span></p></div>
+</div>
+    <div class="cloud rv" aria-label="Band-Cloud">
+      <span style="--w:10">Depeche Mode</span><span style="--w:8">Erasure</span><span style="--w:10">VNV Nation</span><span style="--w:9">New Order</span><span style="--w:8">Pet Shop Boys</span><span style="--w:6">Joy Division</span><span style="--w:6">The Cure</span><span style="--w:7">Kraftwerk</span>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+  <div class="idx rv">// 04.C</div>
   <div><span class="kicker rv"><span data-l="de">Plattenregal</span><span data-l="en">Record shelf</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Lieblingsalben.</span><span data-l="en">Favourite albums.</span></h2><p class="rv d2"><span data-l="de">Platzhalter – hier kommen meine Lieblingsalben hin. Hover über eine Platte.</span><span data-l="en">Placeholder – my favourite albums go here. Hover over a record.</span></p></div>
 </div>
     <div class="grid g4"><div class="album rv d0">
@@ -82,7 +128,7 @@
 <section>
   <div class="wrap">
     <div class="sec-head">
-  <div class="idx rv">// 04.C</div>
+  <div class="idx rv">// 04.D</div>
   <div><span class="kicker rv"><span data-l="de">Live</span><span data-l="en">Live</span></span><h2 class="rv d1" style="margin-top:14px"><span data-l="de">Konzert-Logbuch.</span><span data-l="en">Concert log.</span></h2></div>
 </div>
     <div class="table-wrap rv">
@@ -93,7 +139,7 @@
         </tbody>
       </table>
     </div>
-    <div class="notice rv mt-l"><p><span data-l="de"><strong>Playlists:</strong> Spotify- oder YouTube-Playlists binde ich später so ein, dass sie erst nach einem Klick laden – so werden ohne Zustimmung keine Daten an Dritte übertragen.</span><span data-l="en"><strong>Playlists:</strong> Spotify or YouTube playlists will later be embedded so they only load after a click – no data is sent to third parties without consent.</span></p></div>
+    <div class="notice rv mt-l"><p><span data-l="de"><strong>Spotify &amp; Datenschutz:</strong> Die Spotify-Daten und Cover kommen über meinen eigenen kleinen Dienst – dein Browser verbindet sich dabei nicht mit Spotify. Eingebettete Player würden erst nach einem Klick laden.</span><span data-l="en"><strong>Spotify &amp; privacy:</strong> The Spotify data and covers come through my own small service – your browser never connects to Spotify. Embedded players would only load after a click.</span></p></div>
   </div>
 </section>
 
