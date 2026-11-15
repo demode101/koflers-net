@@ -519,6 +519,7 @@ a.album:hover .t { color: var(--red); }
 .site-footer .big::before { content: attr(data-a); }
 .site-footer .big::after { content: attr(data-b); }
 .site-footer .big .bs { font-style: normal; }
+.site-footer .big { padding: .06em 0 .2em; margin-bottom: -.2em; }
 .site-footer .big .bs::before { content: "/"; -webkit-text-stroke: 1px var(--red); }
 @media (max-width: 760px) { .site-footer .cols { grid-template-columns: 1fr; } }
 
