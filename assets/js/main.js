@@ -364,3 +364,8 @@
     tick(); setInterval(tick, 1000);
   }
 })();
+
+/* App-Modus: Service Worker registrieren (macht die Seite auf dem Handy installierbar) */
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js").catch(function () {}); });
+}

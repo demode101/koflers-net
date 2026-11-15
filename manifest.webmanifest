@@ -1,0 +1,24 @@
+{
+  "id": "/",
+  "name": "DepecheMartin – koflers.net",
+  "short_name": "koflers.net",
+  "description": "Persönliches Werkstatt-Logbuch: 3D-Druck, Plotten, Home Assistant und Dark Wave.",
+  "lang": "de",
+  "start_url": "/?app=1",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#08080a",
+  "theme_color": "#08080a",
+  "categories": ["personalization", "lifestyle", "music"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Musik", "url": "/musik.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "3D-Druck", "url": "/3d-druck.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Home Assistant", "url": "/home-assistant.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
