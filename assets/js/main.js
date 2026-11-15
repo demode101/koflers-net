@@ -83,6 +83,8 @@
     if (!target) return;
     if (!target._html) { target._html = target.innerHTML; target._txt = target.textContent; }
     var orig = target._txt;
+    var box = el.getBoundingClientRect();
+    el.style.width = box.width + "px"; el.style.height = box.height + "px"; el.style.overflow = "visible";
     el._busy = true; el.classList.add("on");
     var f = 0, total = 18;
     (function step() {
@@ -92,7 +94,7 @@
       }
       target.textContent = out;
       if (++f <= total) requestAnimationFrame(step);
-      else { target.innerHTML = target._html; el._busy = false; setTimeout(function () { el.classList.remove("on"); }, 120); }
+      else { target.innerHTML = target._html; el.style.width = el.style.height = el.style.overflow = ""; el._busy = false; setTimeout(function () { el.classList.remove("on"); }, 120); }
     })();
   }
   $$(".glitch").forEach(function (el) {
