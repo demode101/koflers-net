@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#08080a"/>
-  <rect x="6" y="6" width="52" height="52" fill="none" stroke="#ff2b2b" stroke-width="3"/>
-  <rect x="50" y="50" width="10" height="10" fill="#ff2b2b"/>
-  <text x="32" y="41" font-family="Consolas, monospace" font-size="24" font-weight="700" fill="#ff2b2b" text-anchor="middle">DM</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106"><rect width="106" height="106" fill="#08080a"/><rect x="1.5" y="1.5" width="97" height="97" fill="#08080a" stroke="#ff2b2b" stroke-width="3"/><path fill="#e9e9ec" d="M42.84 50.45Q42.84 55.82 40.73 59.83Q38.63 63.84 34.78 65.96Q30.94 68.08 25.97 68.08H11.96V33.34H24.5Q33.25 33.34 38.04 37.76Q42.84 42.19 42.84 50.45ZM35.53 50.45Q35.53 44.85 32.63 41.9Q29.73 38.96 24.35 38.96H19.21V62.46H25.36Q30.03 62.46 32.78 59.23Q35.53 56 35.53 50.45Z"/><path fill="#e9e9ec" d="M82.91 68.08V47.02Q82.91 46.31 82.92 45.59Q82.93 44.88 83.12 39.45Q81.61 46.08 80.88 48.7L75.47 68.08H70.99L65.58 48.7L63.3 39.45Q63.55 45.17 63.55 47.02V68.08H57.97V33.34H66.39L71.76 52.77L72.23 54.64L73.25 59.3L74.59 53.73L80.11 33.34H88.49V68.08Z"/><path fill="#ff2b2b" d="M46.47 31.92H53.53V68.08H46.47Z"/><rect x="88" y="88" width="17" height="17" fill="#ff2b2b"/></svg>

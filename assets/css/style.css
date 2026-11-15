@@ -135,10 +135,10 @@ section + section { border-top: 1px solid var(--line); }
 .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
 .logo-mark {
   width: 32px; height: 32px; display: grid; place-items: center;
-  border: 1px solid var(--red); color: var(--red);
-  font: 700 12px var(--mono); letter-spacing: .02em; position: relative;
+  border: 1px solid var(--red); background: var(--bg); position: relative;
 }
-.logo-mark::after { content: ""; position: absolute; right: -4px; bottom: -4px; width: 6px; height: 6px; background: var(--red); }
+.logo-mark::after { content: ""; position: absolute; right: -1.6px; bottom: -1.6px; width: 5.4px; height: 5.4px; background: var(--red); }
+.logo-mark svg { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); display: block; }
 .logo small { display: block; font: 400 10px var(--mono); color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-top: 1px; }
 
 .nav { display: flex; gap: 2px; margin-left: auto; }
