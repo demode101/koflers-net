@@ -11,7 +11,7 @@
   --line-2: #33333d;
   --text: #e9e9ec;
   --muted: #8b8b96;
-  --dim: #5a5a64;
+  --dim: #7e7e89;
   --red: #ff2b2b;
   --red-2: #c81414;
   --red-glow: rgba(255, 43, 43, .35);
@@ -192,13 +192,13 @@ html[lang="de"] .lang-toggle .de, html[lang="en"] .lang-toggle .en { color: var(
 .btn {
   display: inline-flex; align-items: center; gap: 12px;
   font: 600 13px var(--mono); letter-spacing: .06em; text-transform: uppercase;
-  padding: 15px 22px; border: 1px solid var(--red); color: #fff; background: var(--red);
+  padding: 15px 22px; border: 1px solid #e01b1b; color: #fff; background: #e01b1b;
   cursor: pointer; position: relative; overflow: hidden; transition: color .25s, background .25s;
   border-radius: var(--radius);
 }
 .btn::after { content: "→"; transition: transform .3s var(--ease); }
 .btn:hover::after { transform: translateX(4px); }
-.btn:hover { background: transparent; color: var(--red); }
+.btn:hover { background: transparent; color: var(--red); border-color: var(--red); }
 .btn.outline { background: transparent; color: var(--text); border-color: var(--line-2); }
 .btn.outline:hover { border-color: var(--red); color: var(--red); }
 .btn.dl::after { content: "↓"; }
@@ -509,13 +509,14 @@ a.album:hover .t { color: var(--red); }
 /* ---------- footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 60px 0 40px; margin-top: 40px; font-size: 14px; }
 .site-footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
-.site-footer h4 { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .16em; color: var(--muted); margin-bottom: 14px; }
+.site-footer .foot-h { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .16em; color: var(--muted); margin-bottom: 14px; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li { margin-bottom: 8px; }
 .site-footer li a { color: #b9b9c2; transition: color .2s; }
 .site-footer li a:hover { color: var(--red); }
 .site-footer .bottom { margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font: 11px var(--mono); color: var(--dim); letter-spacing: .08em; text-transform: uppercase; }
 .site-footer .big { font-size: clamp(44px, 9vw, 128px); font-weight: 800; letter-spacing: -.05em; line-height: .9; color: var(--bg-3); -webkit-text-stroke: 1px var(--line-2); margin-top: 50px; user-select: none; white-space: nowrap; overflow: hidden; }
+.site-footer .big::before { content: attr(data-text); }
 @media (max-width: 760px) { .site-footer .cols { grid-template-columns: 1fr; } }
 
 /* ---------- reveal ---------- */

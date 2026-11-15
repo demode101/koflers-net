@@ -3,11 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-bdw2CzbdW4ozfR57Zptu7N3LbOei5cBr4UGm6DSnkKo=' 'sha256-kprFqNqU0YVQONhhR51LvdhlnAlQfDSn86SLrHWKnIw='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://koflers-spotify.mk-ee6.workers.dev; connect-src 'self' https://koflers-spotify.mk-ee6.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://koflers.net/ueber.html">
 <title>Über mich – DepecheMartin</title>
-<meta name="description" content="Über DepecheMartin.">
+<meta name="description" content="Über DepecheMartin und seine Co-Pilotin: wer hinter koflers.net steckt, woran in der Werkstatt gebaut wird und wie du Kontakt aufnimmst.">
 <meta name="theme-color" content="#08080a">
 <meta property="og:title" content="Über mich – DepecheMartin">
-<meta property="og:description" content="Über DepecheMartin.">
+<meta property="og:description" content="Über DepecheMartin und seine Co-Pilotin: wer hinter koflers.net steckt, woran in der Werkstatt gebaut wird und wie du Kontakt aufnimmst.">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -25,14 +28,14 @@
 <div class="bg-scan" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="index.html" aria-label="DepecheMartin – Start">
+    <a class="logo" href="index.html">
       <span class="logo-mark">DM</span>
       <span>DepecheMartin<small>koflers.net / <span data-l="de">werkstatt</span><span data-l="en">workshop</span></small></span>
     </a>
     <nav class="nav" aria-label="Hauptnavigation"><a href="index.html"><span data-l="de">Start</span><span data-l="en">Home</span></a><a href="3d-druck.html"><span data-l="de">3D-Druck</span><span data-l="en">3D Printing</span></a><a href="plotten.html"><span data-l="de">Plotten</span><span data-l="en">Plotting</span></a><a href="home-assistant.html"><span data-l="de">Home Assistant</span><span data-l="en">Home Assistant</span></a><a href="musik.html"><span data-l="de">Musik</span><span data-l="en">Music</span></a><a href="ueber.html" aria-current="page"><span data-l="de">Über mich</span><span data-l="en">About</span></a></nav>
     <div class="tools">
       <button class="btn-ghost cmd-btn" type="button" aria-label="Suche / Befehle"><span class="lbl"><span data-l="de">Suche</span><span data-l="en">Search</span></span> <kbd>Strg K</kbd></button>
-      <button class="btn-ghost lang-toggle" type="button" aria-label="Sprache wechseln / switch language"><span class="de">DE</span><span class="sep">/</span><span class="en">EN</span></button>
+      <button class="btn-ghost lang-toggle" type="button" aria-label="DE / EN – Sprache wechseln / switch language"><span class="de">DE</span><span class="sep">/</span><span class="en">EN</span></button>
       <button class="btn-ghost menu-btn" type="button" aria-expanded="false" aria-label="Menü">☰</button>
     </div>
   </div>
@@ -110,11 +113,11 @@
         <p class="muted" style="margin-top:18px;max-width:380px"><span data-l="de">Ein persönliches Logbuch über 3D-Druck, Plotten, Smart Home und Dark Wave. Gebaut ohne Tracker und ohne Cookies.</span><span data-l="en">A personal log on 3D printing, plotting, smart home and dark wave. Built without trackers and without cookies.</span></p>
       </div>
       <div>
-        <h4><span data-l="de">Bereiche</span><span data-l="en">Sections</span></h4>
+        <h2 class="foot-h"><span data-l="de">Bereiche</span><span data-l="en">Sections</span></h2>
         <ul><li><a href="3d-druck.html"><span data-l="de">3D-Druck</span><span data-l="en">3D Printing</span></a></li><li><a href="plotten.html"><span data-l="de">Plotten</span><span data-l="en">Plotting</span></a></li><li><a href="home-assistant.html"><span data-l="de">Home Assistant</span><span data-l="en">Home Assistant</span></a></li><li><a href="musik.html"><span data-l="de">Musik</span><span data-l="en">Music</span></a></li></ul>
       </div>
       <div>
-        <h4><span data-l="de">Rechtliches</span><span data-l="en">Legal</span></h4>
+        <h2 class="foot-h"><span data-l="de">Rechtliches</span><span data-l="en">Legal</span></h2>
         <ul>
           <li><a href="impressum.html"><span data-l="de">Impressum / Offenlegung</span><span data-l="en">Legal notice</span></a></li>
           <li><a href="datenschutz.html"><span data-l="de">Datenschutz</span><span data-l="en">Privacy</span></a></li>
@@ -122,7 +125,7 @@
         </ul>
       </div>
     </div>
-    <div class="big" aria-hidden="true">DEPECHEMARTIN</div>
+    <div class="big" aria-hidden="true" data-text="DEPECHEMARTIN"></div>
     <div class="bottom">
       <span>© 2026 DepecheMartin · koflers.net</span>
       <span>Uptime <span id="uptime" data-since="2026-11-13">—</span></span>

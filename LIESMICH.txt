@@ -23,3 +23,12 @@ WICHTIG
 
 TASTENKÜRZEL
   Strg + K  oder  /     Befehlspalette (Seiten und Aktionen suchen)
+
+SICHERHEIT / SEO (Stand 15.11.2026)
+  - Jede Seite hat im <head> eine Content-Security-Policy (Meta-Tag).
+    Die kleinen Inline-Skripte im <head> sind per sha256-Hash freigegeben:
+    Wird so ein Skript geändert, muss der Hash in ALLEN Seiten neu berechnet
+    werden, sonst läuft es nicht mehr. Neue externe Adressen (außer dem
+    Spotify-Worker) müssen dort ebenfalls ergänzt werden.
+  - robots.txt und sitemap.xml liegen im Hauptordner. Neue Seiten in die
+    sitemap.xml eintragen.
