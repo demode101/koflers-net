@@ -137,7 +137,8 @@ section + section { border-top: 1px solid var(--line); }
   width: 32px; height: 32px; display: grid; place-items: center;
   border: 1px solid var(--red); background: var(--bg); position: relative;
 }
-.logo-mark::after { content: ""; position: absolute; right: -1.6px; bottom: -1.6px; width: 5.4px; height: 5.4px; background: var(--red); }
+.logo-mark::after { content: ""; position: absolute; right: -1.6px; bottom: -1.6px; width: 5.4px; height: 5.4px; background: var(--red); transition: background .4s; }
+.door-open .logo-mark::after { background: #ffb000; }
 .logo-mark svg { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); display: block; }
 .logo small { display: block; font: 400 10px var(--mono); color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-top: 1px; }
 

@@ -371,3 +371,42 @@
 if ("serviceWorker" in navigator && location.protocol === "https:") {
   window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js").catch(function () {}); });
 }
+
+/* Live-Anzeige (nur auf eigenen Geräten): Eckquadrat im Logo färbt sich, wenn die Eingangstür offen ist.
+ * Einrichten: einmal koflers.net/#dk=<Schlüssel> aufrufen. Entfernen: koflers.net/#dk=aus
+ * Ohne Schlüssel baut die Seite keine Verbindung auf. */
+(function () {
+  "use strict";
+  var KEY = "km-dk", LIVE = "wss://koflers-spotify.mk-ee6.workers.dev/live";
+  var get = function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  var m = location.hash.match(/^#dk=([A-Za-z0-9_-]{2,100})$/);
+  if (m) {
+    try { if (m[1] === "aus") localStorage.removeItem(KEY); else localStorage.setItem(KEY, m[1]); } catch (e) {}
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+  var key = get();
+  if (!key || !("WebSocket" in window)) return;
+
+  var root = document.documentElement, ws = null, retry = 0, timer = null;
+  function connect() {
+    clearTimeout(timer);
+    if (document.hidden || ws) return;
+    try { ws = new WebSocket(LIVE); } catch (e) { ws = null; return later(); }
+    ws.onopen = function () { retry = 0; ws.send(JSON.stringify({ auth: key })); };
+    ws.onmessage = function (ev) {
+      var d; try { d = JSON.parse(ev.data); } catch (e) { return; }
+      if (d.t === "door") root.classList.toggle("door-open", !!d.open);
+    };
+    ws.onclose = function () { ws = null; later(); };
+  }
+  function later() {
+    clearTimeout(timer);
+    if (document.hidden) return;
+    timer = setTimeout(connect, Math.min(30000, 1000 * Math.pow(2, retry++)));
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) { clearTimeout(timer); if (ws) { ws.onclose = null; ws.close(); ws = null; } }
+    else connect();
+  });
+  connect();
+})();

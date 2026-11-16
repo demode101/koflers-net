@@ -92,13 +92,16 @@
     if (pos >= state.track.duration_ms) { state.playing = false; loadNow(); }
   }
 
+  function applyNow(d) {
+    var changed = !state || !d.track || !state.track || d.track.url !== state.track.url || d.playing !== state.playing;
+    state = d; tickStart = Date.now();
+    renderNow();
+    if (changed) loadList("recent", "/api/recent", true);
+  }
+
   function loadNow() {
-    return get("/api/now").then(function (d) {
-      var changed = !state || !d.track || !state.track || d.track.url !== state.track.url || d.playing !== state.playing;
-      state = d; tickStart = Date.now();
-      renderNow();
-      if (changed && d.playing === false) loadList("recent", "/api/recent", true);
-    }).catch(function () {
+    if (ws && ws.readyState === 1) return Promise.resolve(); /* Live-Verbindung liefert selbst */
+    return get("/api/now").then(applyNow).catch(function () {
       now.setAttribute("data-state", "error");
       el.status.textContent = L("Spotify gerade nicht erreichbar", "Spotify unavailable right now");
     });
@@ -109,8 +112,35 @@
     if (document.hidden) return;
     nowTimer = setInterval(loadNow, 30000);
   }
+
+  /* Live-Verbindung: Songwechsel kommen per Push (Worker fragt Spotify zentral ab).
+     Fällt sie aus, übernimmt wieder die Abfrage alle 30 s. */
+  var ws = null, wsRetry = 0, wsTimer = null;
+  function live() {
+    clearTimeout(wsTimer);
+    if (ws || document.hidden || !("WebSocket" in window)) return;
+    try { ws = new WebSocket(API.replace(/^http/, "ws") + "/live"); } catch (e) { ws = null; return; }
+    ws.onopen = function () { wsRetry = 0; };
+    ws.onmessage = function (ev) {
+      var d; try { d = JSON.parse(ev.data); } catch (e) { return; }
+      if (d.t !== "now") return;
+      if (d.playing && d.at && d.track && d.track.duration_ms) /* Stand vom Server ggf. ein paar Sekunden alt */
+        d.progress_ms = Math.min(d.track.duration_ms, d.progress_ms + Math.max(0, Math.min(15000, Date.now() - d.at)));
+      applyNow(d);
+    };
+    ws.onclose = function () {
+      ws = null;
+      if (document.hidden) return;
+      wsTimer = setTimeout(live, Math.min(60000, 2000 * Math.pow(2, wsRetry++)));
+    };
+  }
+  function liveStop() { clearTimeout(wsTimer); if (ws) { ws.onclose = null; ws.close(); ws = null; } }
+
   setInterval(tickProgress, 1000);
-  document.addEventListener("visibilitychange", function () { if (!document.hidden) loadNow(); schedule(); });
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) liveStop(); else { loadNow(); live(); }
+    schedule();
+  });
 
   /* ---------------- Listen ---------------- */
   var lists = { recent: root.querySelector('[data-list="recent"]'), top: root.querySelector('[data-list="top"]') };
@@ -249,6 +279,7 @@
 
   loadNow();
   schedule();
+  live();
   loadList("recent", "/api/recent");
   loadList("top", "/api/top?range=long");
   buildCloud();
