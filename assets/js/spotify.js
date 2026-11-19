@@ -96,7 +96,7 @@
     var changed = !state || !d.track || !state.track || d.track.url !== state.track.url || d.playing !== state.playing;
     state = d; tickStart = Date.now();
     renderNow();
-    if (changed) loadList("recent", "/api/recent", true);
+    if (changed) loadList("recent", "/api/recent?limit=30", true);
   }
 
   function loadNow() {
@@ -161,7 +161,14 @@
   function loadList(which, path, quiet) {
     if (!quiet) lists[which].classList.add("loading");
     return get(path).then(function (d) {
-      data[which] = d.items || [];
+      var items = d.items || [];
+      /* Spotify speichert einen Song mehrfach, wenn er neu anläuft (Gerätewechsel, Neustart).
+         Gleiche Songs direkt hintereinander nur einmal zeigen – mit der neuesten Zeit. */
+      if (which === "recent") items = items.filter(function (t, i) {
+        var p = items[i - 1];
+        return !p || (p.url || p.title + "|" + p.artists) !== (t.url || t.title + "|" + t.artists);
+      }).slice(0, 10);
+      data[which] = items;
       renderList(which);
     }).catch(function () {
       if (!data[which]) lists[which].innerHTML = '<li class="sp-empty">' + esc(L("Spotify gerade nicht erreichbar.", "Spotify unavailable right now.")) + "</li>";
@@ -280,7 +287,7 @@
   loadNow();
   schedule();
   live();
-  loadList("recent", "/api/recent");
+  loadList("recent", "/api/recent?limit=30");
   loadList("top", "/api/top?range=long");
   buildCloud();
 })();

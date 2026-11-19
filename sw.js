@@ -3,7 +3,7 @@
  * CSS/JS/Bilder: sofort aus dem Cache, im Hintergrund aktualisieren.
  * Fremde Adressen (z. B. Spotify-Worker) werden nie zwischengespeichert.
  * Bei jeder Änderung an der Seite VERSION hochzählen. */
-var VERSION = "km-v8";
+var VERSION = "km-v9";
 var CORE = [
   "/", "/index.html", "/3d-druck.html", "/plotten.html", "/home-assistant.html",
   "/musik.html", "/ueber.html", "/impressum.html", "/datenschutz.html", "/404.html",
